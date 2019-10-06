@@ -11,7 +11,6 @@ from datetime import datetime
 user_id = argv[1]
 login = argv[2]
 passwd = argv[3]
-print(login, passwd)
 now = datetime.now()
 
 
