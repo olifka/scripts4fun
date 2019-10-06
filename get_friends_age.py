@@ -1,5 +1,11 @@
 """
+
+Python 3
+
 Скрипт позволяет посчитать средний возраст друзей пользователя VK по его id
+
+USAGE: ~$ python get_friends_age.py $USER_ID
+
 """
 import vk_api
 from sys import argv
@@ -52,7 +58,7 @@ def get_user_info(vk, user_id):
         bdate = datetime.strptime(str(bdate), "%d.%m.%Y")
     except ValueError:
         return True
-    
+
     age = int(now.year) - int(bdate.year)
 
     if age > 75:
@@ -61,14 +67,14 @@ def get_user_info(vk, user_id):
     first_name = userInfoUnpursed[0]['first_name']
     last_name = userInfoUnpursed[0]['last_name']
     full_name = "{} {}".format(first_name, last_name)
-    
+
     if int(userInfoUnpursed[0]['sex']) == 1:
         sex = 'W'
     elif int(userInfoUnpursed[0]['sex']) == 2:
         sex = 'M'
     else:
         return True
-        
+
     userInfoPursed = {'id': user_id, 'name': full_name, 'bdate': bdate, 'sex': sex, 'age': age}
 
     return userInfoPursed
@@ -117,7 +123,7 @@ def parse_basic_info(people):
             men.append(person)
 
         all_counter += 1
-    
+
     women = {'amount': w_counter, 'items': women}
     men = {'amount': m_counter, 'items': men}
     people = {'amount': all_counter, 'items': people}
@@ -135,9 +141,9 @@ def parse_age_data(people):
 
     for person in people:
         age = int(person['age'])
-        
+
         ages_list.append(age)
-    
+
     ages_list.sort()
     max_age = ages_list[-1]
     min_age = ages_list[0]
@@ -145,11 +151,11 @@ def parse_age_data(people):
 
     for element in ages_list:
         avrg_age = avrg_age + element
-    
+
     avrg_age = avrg_age/len(ages_list)
 
 
-    
+
     return ages_list, max_age, min_age, avrg_age, len(ages_list)
 
 
@@ -168,19 +174,19 @@ def main(user_id):
         vk_session.check_sid()
         vk = vk_session.get_api()
         friends = vk.friends.get(user_id=user_id, order='hints')
-        
+
         friendsParsed = []
 
         for friend in friends['items']:
 
-            friendParsed = get_user_info(vk, friend) 
+            friendParsed = get_user_info(vk, friend)
 
             if friendParsed == True:
                 pass
             else:
                 friendsParsed.append(friendParsed)
                 print(friendParsed)
-                
+
         women, men, people = parse_basic_info(friendsParsed)
         w_ages_list, w_max_age, w_min_age, w_avrg_age, w_amount = parse_age_data(women['items'])
         m_ages_list, m_max_age, m_min_age, m_avrg_age, m_amount = parse_age_data(men['items'])
