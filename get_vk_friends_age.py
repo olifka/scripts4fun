@@ -155,8 +155,8 @@ def parse_age_data(people):
 
 
 
-def main(user_id):
-    global login, passwd
+def main():
+    global user_id, login, passwd
     vk_session = vk_api.VkApi(
         login, passwd,
         # функция для обработки двухфакторной аутентификации
@@ -196,7 +196,7 @@ def main(user_id):
 
 
 if __name__ == '__main__':
-    main(user_id)
+    main()
     exit()
 
 exit()
