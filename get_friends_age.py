@@ -204,3 +204,5 @@ def main(user_id):
 if __name__ == '__main__':
     main(user_id)
     exit()
+
+exit()
