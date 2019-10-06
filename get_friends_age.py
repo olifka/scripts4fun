@@ -1,20 +1,17 @@
 """
-
 Python 3
-
 Скрипт позволяет посчитать средний возраст друзей пользователя VK по его id
-
 USAGE: ~$ python get_friends_age.py $USER_ID $VK_LOGIN $VK_PASSWD
-
 """
 import vk_api
 from sys import argv
 from datetime import datetime
 
 
-user_id = argv[0]
-login = argv[1]
-passwd = argv[2]
+user_id = argv[1]
+login = argv[2]
+passwd = argv[3]
+print(login, passwd)
 now = datetime.now()
 
 
@@ -32,7 +29,6 @@ get_user_info()
                     * имя
                     * дата рождения (ДР)
                     * пол
-
 Если что-то пошло не так (у пользователя скрыта ДР,
 возраст подозрительно большой, нет инфы о гендере),
 функция возвращает "True".
@@ -88,11 +84,9 @@ parse_basic_info()
 можно их начинать обрабатывать. Эта функция делит общий список друзей
 цели на два списка (men, women), подсчитывает общее количество элементов
 в каждом и возвращает три словаря:
-
                 women = {'amount': counter (Счётчик), 'items': [{'id','name','bdate','sex','age'},{},{}...] (Список словарей с данными УЗ)}
                 men = {'amount': counter, 'items': men}
                 people = {'amount': counter, 'items': people}
-
 >>>print(women['items'])
 [
     {
@@ -107,7 +101,6 @@ parse_basic_info()
         'name':.... etc....
     }
 ]
-
 """
 def parse_basic_info(people):
     women = []
