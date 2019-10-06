@@ -4,7 +4,7 @@ Python 3
 
 Скрипт позволяет посчитать средний возраст друзей пользователя VK по его id
 
-USAGE: ~$ python get_friends_age.py $USER_ID
+USAGE: ~$ python get_friends_age.py $USER_ID $VK_LOGIN $VK_PASSWD
 
 """
 import vk_api
@@ -13,6 +13,8 @@ from datetime import datetime
 
 
 user_id = argv[0]
+login = argv[1]
+passwd = argv[2]
 now = datetime.now()
 
 
@@ -162,9 +164,9 @@ def parse_age_data(people):
 
 
 def main(user_id):
-    login, password = 'login', 'pass'
+    global login, passwd
     vk_session = vk_api.VkApi(
-        login, password,
+        login, passwd,
         # функция для обработки двухфакторной аутентификации
         auth_handler=auth_handler
     )
