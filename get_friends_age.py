@@ -94,11 +94,11 @@ parse_basic_info()
 >>>print(women['items'])
 [
     {
-        'id': 1232787, \
-        'name': 'Марина Казакова', \
-        'bdate': datetime.datetime(1990, 6, 30, 0, 0), \
-        'sex': 'W', \
-        'age': 29
+        'id': 00000000, \
+        'name': 'Firstname Lastname', \
+        'bdate': datetime.datetime(YEAR, M, DA, H, M), \
+        'sex': 'W'/'M', \
+        'age': 00
     },
     {
         'id': 1268221, \
