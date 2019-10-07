@@ -42,8 +42,6 @@ get_user_info()
 def get_user_info(vk, user_id):
     global now
     userInfoUnpursed = vk.users.get(user_id=user_id, fields="bdate, sex, nickname")
-    # Раскомментить чтобы получить ID+Имя
-    # print('ID - {}; NAME - {} {}'.format(user_id, userInfoUnpursed[0]['first_name'], userInfoUnpursed[0]['last_name']))
 
     try:
         bdate = userInfoUnpursed[0]['bdate']
