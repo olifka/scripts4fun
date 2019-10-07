@@ -51,7 +51,6 @@ def get_user_info(vk, user_id):
         return True
 
     try:
-        # print("Try to parse date", bdate)
         bdate = datetime.strptime(str(bdate), "%d.%m.%Y")
     except ValueError:
         return True
@@ -172,7 +171,6 @@ def main():
         friendsParsed = []
 
         for friend in friends['items']:
-
             friendParsed = get_user_info(vk, friend)
 
             if friendParsed == True:
@@ -186,8 +184,6 @@ def main():
         m_ages_list, m_max_age, m_min_age, m_avrg_age, m_amount = parse_age_data(men['items'])
 
         string = 'Female friends\nTOTAL: {}\nMin age: {}\nMax age: {}\nAverage age: {}\n\nMale friends\nTOTAL: {}\nMin age: {}\nMax age: {}\nAverage age: {}\n\n'.format(w_amount, w_min_age, w_max_age, w_avrg_age, m_amount, m_min_age, m_max_age, m_avrg_age)
-
-        string.format()
         print(string)
 
     except vk_api.AuthError as error_msg:
