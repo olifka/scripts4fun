@@ -22,6 +22,7 @@ def auth_handler():
 
     return key, remember_device
 
+
 """
 get_user_info()
 Функция получает из VK данные по ID учётной записи (УЗ):
