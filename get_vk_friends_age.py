@@ -151,8 +151,6 @@ def parse_age_data(people):
     return ages_list, max_age, min_age, avrg_age, len(ages_list)
 
 
-
-
 def main():
     global user_id, login, passwd
     vk_session = vk_api.VkApi(
